@@ -37,11 +37,18 @@ galleryEl.addEventListener('click', evt => {
     console.log(itemUrl)
 
     const instance = basicLightbox.create(`
-    <img src=${itemUrl} width="800" height="600">
-    `)
+    <img src=${itemUrl} width="800" height="600">,`,
+    { closable: true,
+        className: '',
+        onShow: (instance) => {
+            galleryEl.addEventListener('keydown', closeImageAfterKeydown)
+        },
+        onClose: (instance) => {
+            galleryEl.removeEventListener('keydown', closeImageAfterKeydown)
+        }
+    })
     instance.show()
 
-    galleryEl.addEventListener('keydown', closeImageAfterKeydown)
 
     function closeImageAfterKeydown(ev) {
         if (ev.key === 'Escape') {

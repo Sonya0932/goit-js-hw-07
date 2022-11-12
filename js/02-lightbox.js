@@ -20,11 +20,4 @@ function createCardGallery (galleryItems) {
     }).join('')
 }
 
-galleryEl.addEventListener('click', evt => {
-    evt.preventDefault();
-    if (evt.target.nodeName !== 'IMG') {
-		return
-    }
-    
-    var lightbox = new SimpleLightbox('.gallery a', {captionsData: 'alt', captionPosition: 'bottom', captionDelay: 250 });
-})
+var lightbox = new SimpleLightbox('.gallery a', {captionsData: 'alt', captionPosition: 'bottom', captionDelay: 250 });
